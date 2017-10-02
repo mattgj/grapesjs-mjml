@@ -5,33 +5,32 @@ var name = 'grapesjs-mjml';
 var env = process.env.WEBPACK_ENV;
 var plugins = [];
 
-if(env !== 'dev'){
-  plugins.push(new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } }));
+if (env !== 'dev') {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
+  );
   plugins.push(new webpack.BannerPlugin(pkg.name + ' - ' + pkg.version));
 }
 
 module.exports = {
   entry: './src/main',
   output: {
-      filename: './dist/' + name + '.min.js',
-      library: name,
-      libraryTarget: 'umd',
+    filename: './dist/' + name + '.min.js',
+    library: name,
+    libraryTarget: 'umd'
   },
   module: {
-    preLoaders: [
-        { test: /\.json$/, loader: 'json'},
-    ],
+    preLoaders: [{ test: /\.json$/, loader: 'json' }],
     loaders: [
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        include: /src/,
+        include: [/src/, 'node_modules/grapesjs'],
         query: {
           presets: ['es2015']
         }
-      },
-    ],
+      }
+    ]
   },
   plugins: plugins
 };

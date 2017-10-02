@@ -1,19 +1,31 @@
 export default (editor, opt = {}) => {
-
   let config = editor.getConfig();
   let codeViewer = editor.CodeManager.getViewer('CodeMirror').clone();
   let btnImp = document.createElement('button');
   let container = document.createElement('div');
   let pfx = config.stylePrefix || '';
+  let cmdm = editor.Commands;
+
+  const importMjml = code => {
+    code = code
+      .replace(/<\/?mj-body>|<\/?mjml>/gi, '')
+      .replace(/<mj-head>[\s\S.]*<\/mj-head>/gi, '');
+    editor.DomComponents.getWrapper().set('content', '');
+    editor.setComponents(code.trim());
+  };
+
+  cmdm.add('mjml-import-code', {
+    run(editor, sender, opts) {
+      importMjml(opts);
+    }
+  });
 
   // Init import button
   btnImp.innerHTML = opt.modalBtnImport;
   btnImp.className = pfx + 'btn-prim ' + pfx + 'btn-import';
   btnImp.onclick = () => {
     let code = codeViewer.editor.getValue();
-    code = code.replace(/<\/?mj-body>|<\/?mjml>/ig, '');
-    editor.DomComponents.getWrapper().set('content', '');
-    editor.setComponents(code.trim());
+    importMjml(code);
     editor.Modal.close();
   };
 
@@ -25,7 +37,6 @@ export default (editor, opt = {}) => {
   });
 
   return {
-
     run(editor, sender = {}) {
       let modal = editor.Modal;
       let modalContent = modal.getContentEl();
@@ -54,7 +65,6 @@ export default (editor, opt = {}) => {
       modal.open();
       viewer.refresh();
       sender.set && sender.set('active', 0);
-    },
-
-  }
-}
+    }
+  };
+};

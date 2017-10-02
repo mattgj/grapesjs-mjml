@@ -4,7 +4,7 @@ export default (editor, opt = {}) => {
   if (opt.resetBlocks) {
     bm.getAll().reset();
   }
-/*
+  /*
   bm.add('mj-section', {
     label: 'Section',
     content: '<mj-section></mj-section>',
@@ -34,8 +34,8 @@ export default (editor, opt = {}) => {
     attributes: {
       class: 'gjs-fonts gjs-f-b1',
       // Workaround
-      'data-type': 'mj-section',
-    },
+      'data-type': 'mj-section'
+    }
   });
 
   bm.add('mj-2-columns', {
@@ -47,8 +47,8 @@ export default (editor, opt = {}) => {
     attributes: {
       class: 'gjs-fonts gjs-f-b2',
       // Workaround
-      'data-type': 'mj-section',
-    },
+      'data-type': 'mj-section'
+    }
   });
 
   bm.add('mj-3-columns', {
@@ -61,8 +61,23 @@ export default (editor, opt = {}) => {
     attributes: {
       class: 'gjs-fonts gjs-f-b3',
       // Workaround
-      'data-type': 'mj-section',
-    },
+      'data-type': 'mj-section'
+    }
+  });
+
+  bm.add('mj-4-columns', {
+    label: '4 Columns',
+    content: `<mj-section>
+        <mj-column><mj-text>Content 1</mj-text></mj-column>
+        <mj-column><mj-text>Content 2</mj-text></mj-column>
+        <mj-column><mj-text>Content 3</mj-text></mj-column>
+        <mj-column><mj-text>Content 4</mj-text></mj-column>
+      </mj-section>`,
+    attributes: {
+      class: 'gjs-fonts gjs-f-b3',
+      // Workaround
+      'data-type': 'mj-section'
+    }
   });
 
   bm.add('mj-text', {
@@ -70,8 +85,8 @@ export default (editor, opt = {}) => {
     content: '<mj-text>Insert text here</mj-text>',
     attributes: {
       class: 'gjs-fonts gjs-f-text',
-      'data-type': 'mj-text',
-    },
+      'data-type': 'mj-text'
+    }
   });
 
   bm.add('mj-button', {
@@ -79,8 +94,8 @@ export default (editor, opt = {}) => {
     content: '<mj-button>Button</mj-button>',
     attributes: {
       class: 'gjs-fonts gjs-f-button',
-      'data-type': 'mj-button',
-    },
+      'data-type': 'mj-button'
+    }
   });
 
   bm.add('mj-image', {
@@ -88,8 +103,8 @@ export default (editor, opt = {}) => {
     content: '<mj-image src="http://placehold.it/350x250/78c5d6/fff">',
     attributes: {
       class: 'fa fa-image',
-      'data-type': 'mj-image',
-    },
+      'data-type': 'mj-image'
+    }
   });
 
   bm.add('mj-divider', {
@@ -97,8 +112,8 @@ export default (editor, opt = {}) => {
     content: '<mj-divider/>',
     attributes: {
       class: 'gjs-fonts gjs-f-divider',
-      'data-type': 'mj-divider',
-    },
+      'data-type': 'mj-divider'
+    }
   });
 
   bm.add('mj-social', {
@@ -106,7 +121,7 @@ export default (editor, opt = {}) => {
     content: '<mj-social/>',
     attributes: {
       class: 'fa fa-share-alt',
-      'data-type': 'mj-social',
-    },
+      'data-type': 'mj-social'
+    }
   });
-}
+};

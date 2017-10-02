@@ -6,4 +6,4 @@ export default (editor, opt = {}) => {
 
   cmd.add('mjml-import', importCommand.default(editor, opt));
   cmd.add(exportName, exportCommand.default(editor, opt));
-}
+};
