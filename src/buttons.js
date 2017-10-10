@@ -3,12 +3,6 @@ export default (editor, opt = {}) => {
   let optPanel = pnm.getPanel('options');
 
   pnm.addButton('options', {
-    id: 'preview2',
-    className: 'fa fa-eye',
-    command: 'preview'
-  });
-
-  pnm.addButton('options', {
     id: 'mjml-import',
     className: 'fa fa-download',
     command: 'mjml-import'
